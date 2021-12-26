@@ -73,7 +73,6 @@ const Link = styled.a`
 
   &:hover img {
     transform: scale(1.1);
-    clip-path: polygon(0 0 100% 0 100% 100% 0 100%);
 
     @media (prefers-reduced-motion) {
       transform: none;
