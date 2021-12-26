@@ -37,9 +37,7 @@ const ShoeCard = ({
         <ImageWrapper>
           <Image alt="" src={imageSrc} />
           {variant === 'on-sale' && <SaleFlag>Sale</SaleFlag>}
-          {variant === 'new-release' && (
-            <NewFlag>Just released!</NewFlag>
-          )}
+          {variant === 'new-release' && <NewFlag>Just released!</NewFlag>}
         </ImageWrapper>
         <Spacer size={12} />
         <Row>
@@ -47,9 +45,7 @@ const ShoeCard = ({
           <Price
             style={{
               '--color':
-                variant === 'on-sale'
-                  ? 'var(--color-gray-700)'
-                  : undefined,
+                variant === 'on-sale' ? 'var(--color-gray-700)' : undefined,
               '--text-decoration':
                 variant === 'on-sale' ? 'line-through' : undefined,
             }}
@@ -71,17 +67,37 @@ const ShoeCard = ({
 const Link = styled.a`
   text-decoration: none;
   color: inherit;
+
+  overflow: hidden;
+
+  transition: transform 100ms ease-in;
+
+  &:hover img {
+    transform: scale(1.1);
+
+    @media (prefers-reduced-motion) {
+      transform: none;
+    }
+  }
 `;
 
 const Wrapper = styled.article``;
 
 const ImageWrapper = styled.div`
   position: relative;
+
+  overflow: hidden;
 `;
 
 const Image = styled.img`
+  display: block;
   width: 100%;
   border-radius: 16px 16px 4px 4px;
+
+  transition: transform 250ms ease-out;
+  @media (prefers-reduced-motion) {
+    transition: revert;
+  }
 `;
 
 const Row = styled.div`
