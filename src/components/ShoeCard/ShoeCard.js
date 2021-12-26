@@ -69,10 +69,16 @@ const ShoeCard = ({
 const Link = styled.a`
   text-decoration: none;
   color: inherit;
-  transition: transform 100ms ease-in;
+  transition: transform 100ms ease-in, filter 1s ease-in;
+  --rotation: 0deg;
+
+  &:hover {
+    --rotation: 2deg;
+  }
 
   &:hover img {
     transform: scale(1.1);
+    filter: none;
 
     @media (prefers-reduced-motion) {
       transform: none;
@@ -95,6 +101,7 @@ const Image = styled.img`
   display: block;
   width: 100%;
   transition: transform 250ms ease-out;
+  filter: grayscale(1);
 
   @media (prefers-reduced-motion) {
     transition: revert;
@@ -138,6 +145,12 @@ const Flag = styled.div`
   font-weight: ${WEIGHTS.bold};
   color: var(--color-white);
   border-radius: 2px;
+  transition: transform 250ms ease-in;
+  transform: rotate(var(--rotation));
+
+  @media (prefers-reduced-motion) {
+    transition: none;
+  }
 `;
 
 const SaleFlag = styled(Flag)`
