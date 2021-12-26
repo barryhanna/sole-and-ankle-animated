@@ -85,14 +85,14 @@ const Wrapper = styled.article``;
 
 const ImageWrapper = styled.div`
   position: relative;
-
+  border-radius: 16px 16px 4px 4px;
   overflow: hidden;
 `;
 
 const Image = styled.img`
   display: block;
   width: 100%;
-  border-radius: 16px 16px 4px 4px;
+  /* border-radius: 16px 16px 4px 4px; */
 
   transition: transform 250ms ease-out;
   @media (prefers-reduced-motion) {
