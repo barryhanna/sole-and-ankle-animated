@@ -20,12 +20,24 @@ const Header = () => {
           <Logo />
         </LogoWrapper>
         <DesktopNav>
-          <NavLink href="/sale">Sale</NavLink>
-          <NavLink href="/new">New&nbsp;Releases</NavLink>
-          <NavLink href="/men">Men</NavLink>
-          <NavLink href="/women">Women</NavLink>
-          <NavLink href="/kids">Kids</NavLink>
-          <NavLink href="/collections">Collections</NavLink>
+          <NavLink href="/sale">
+            <span data-hover="Sale">Sale</span>
+          </NavLink>
+          <NavLink href="/new">
+            <span data-hover="New&nbsp;Releases">New&nbsp;Releases</span>
+          </NavLink>
+          <NavLink href="/men">
+            <span data-hover="Men">Men</span>
+          </NavLink>
+          <NavLink href="/women">
+            <span data-hover="Women">Women</span>
+          </NavLink>
+          <NavLink href="/kids">
+            <span data-hover="Kids">Kids</span>
+          </NavLink>
+          <NavLink href="/collections">
+            <span data-hover="Collections">Collections</span>
+          </NavLink>
         </DesktopNav>
         <MobileActions>
           <ShoppingBagButton>
@@ -115,14 +127,42 @@ const Filler = styled.div`
 `;
 
 const NavLink = styled.a`
-  font-size: 1.125rem;
+  --fs: 1.125rem;
+  --lh: 1.675rem;
+  display: inline-block;
+  position: relative;
+  font-size: var(--fs);
   text-transform: uppercase;
   text-decoration: none;
   color: var(--color-gray-900);
   font-weight: ${WEIGHTS.medium};
+  overflow: hidden;
 
   &:first-of-type {
     color: var(--color-secondary);
+  }
+
+  & span {
+    display: inline-block;
+    height: var(--lh);
+
+    transition: transform 0.3s;
+    will-change: transform;
+
+    &::after {
+      position: absolute;
+      color: inherit;
+      font-weight: bold;
+      content: attr(data-hover);
+
+      top: var(--lh);
+      left: 0;
+    }
+  }
+
+  &:hover span {
+    transform: translateY(calc(-1 * var(--lh)));
+    transition: 0.2s 0.15s ease-in;
   }
 `;
 
