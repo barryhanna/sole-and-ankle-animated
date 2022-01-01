@@ -45,6 +45,16 @@ const Overlay = styled(DialogOverlay)`
   background: var(--color-backdrop);
   display: flex;
   justify-content: flex-end;
+  animation: fadeIn 500ms;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
 
 const Content = styled(DialogContent)`
@@ -54,6 +64,18 @@ const Content = styled(DialogContent)`
   padding: 24px 32px;
   display: flex;
   flex-direction: column;
+  will-change: transform;
+  animation: slideIn 400ms 200ms;
+  animation-fill-mode: both;
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0%);
+    }
+  }
 `;
 
 const CloseButton = styled(UnstyledButton)`
@@ -67,6 +89,18 @@ const Nav = styled.nav`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  will-change: opacity;
+  opacity: 0;
+  animation: fadeIn 500ms 400ms forwards;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
 
 const NavLink = styled.a`
